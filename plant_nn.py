@@ -4,7 +4,6 @@ from tensorflow.keras import layers
 
 image_size = (195, 130)
 batch_size = 32
-color_mode = "grayscale"
 num_training_batches = 6
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
@@ -12,7 +11,6 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     validation_split=0.2,
     subset="training",
     seed = 1337,
-    color_mode = color_mode,
     image_size=image_size,
     batch_size=batch_size,
 )
@@ -25,7 +23,6 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
     validation_split=0.2,
     subset="validation",
     seed = 1337,
-    color_mode = color_mode,
     image_size=image_size,
     batch_size=batch_size,
 )
@@ -86,7 +83,7 @@ def make_model(input_shape):
     return keras.Model(inputs, outputs)
 
 
-model = make_model(input_shape=image_size + (1,))
+model = make_model(input_shape=image_size + (3,))
 
 epochs = 100
 
