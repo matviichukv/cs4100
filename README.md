@@ -13,7 +13,7 @@ it reduces accuracy on test/validation set to ~80% from 95%+. And on the setup t
 was tested on, it decreased one epoch time by only 1s (from 9-10s avage).
 
 ### How to run it
-Clone it and run the plant_nn.py. Tested to work on python 3.9, and tensorflow 2.5. 
+Clone it and run the plant_nn.py. Tested to work on python 3.7+, and tensorflow 2.5. 
 
 ### References
 Data:
