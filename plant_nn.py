@@ -1,7 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
-from sklearn.model_selection import train_test_split
 
 image_size = (195, 130)
 batch_size = 32
