@@ -15,6 +15,9 @@ was tested on, it decreased one epoch time by only 1s (from 9-10s avage).
 ### How to run it
 Clone it and run the plant_nn.py. Tested to work on python 3.7+, and tensorflow 2.5. 
 
+### Contributors
+Vadym Matviichuk, Yasmine Karni, Amanda Bell
+
 ### References
 Data:
 Thapa, R., Zhang, K., Snavely, N., Belongie, S., and Khan, A.. 2020. 
