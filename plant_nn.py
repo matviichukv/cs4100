@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
+import sys
 
 image_size = (195, 130)
 batch_size = 32
@@ -82,8 +83,13 @@ def make_model(input_shape):
     outputs = layers.Dense(1, activation="sigmoid")(x)
     return keras.Model(inputs, outputs)
 
+pre_trained = len(sys.argv) > 1 and sys.argv[1] == '--pre-trained'
 
-model = make_model(input_shape=image_size + (3,))
+if pre_trained:
+    model = keras.models.load_model('saved_model')
+else:
+    model = make_model(input_shape=image_size + (3,))
+
 
 epochs = 100
 
@@ -95,9 +101,11 @@ model.compile(
     loss="binary_crossentropy",
     metrics=["accuracy"],
 )
-model.fit(
-    augmented_train_ds, epochs=epochs, callbacks=callbacks, validation_data=val_ds,
-)
+if not pre_trained:
+    model.fit(
+        augmented_train_ds, epochs=epochs, callbacks=callbacks, validation_data=val_ds,
+    )
+    model.save('saved_model')
 
 print(f"testing model on {num_training_batches * batch_size} images")
 (test_loss, test_acc) = model.evaluate(test_ds)
